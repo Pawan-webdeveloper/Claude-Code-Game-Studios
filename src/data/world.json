@@ -1,0 +1,17 @@
+{
+  "seed": 7311,
+  "islandRadius": 1650,
+  "worldLimit": 2300,
+  "waterY": 0,
+  "chunkSize": 128,
+  "cellsPerChunk": { "low": 20, "medium": 28, "high": 36 },
+  "viewRadiusChunks": { "low": 3, "medium": 4, "high": 5 },
+  "fog": { "near": 180, "far": { "low": 520, "medium": 680, "high": 860 } },
+  "regionBlendWidth": 160,
+  "regionWarp": { "frequency": 0.0016, "amount": 220 },
+  "propsPerChunk": 34,
+  "cloudCount": 26,
+  "paper": "#f4eedc",
+  "ink": "#1f1d2b",
+  "spawn": { "x": 60, "y": 75, "z": 260, "faceTowards": "scanlyfix-lighthouse" }
+}

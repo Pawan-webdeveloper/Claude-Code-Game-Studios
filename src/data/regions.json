@@ -1,0 +1,185 @@
+[
+  {
+    "id": "pallet",
+    "name": "Pallet Meadows",
+    "center": [
+      0,
+      0
+    ],
+    "terrain": {
+      "base": 12,
+      "amp": 26,
+      "ridged": 0,
+      "freq": 0.0035
+    },
+    "colors": {
+      "low": "#a3dc4e",
+      "mid": "#93d24a",
+      "high": "#b5acc9",
+      "accent": "#ffb3c1"
+    },
+    "sky": "#eef4f5",
+    "prop": "roundTree",
+    "propDensity": 1.0,
+    "fields": [
+      "#ffd84d",
+      "#a8e04a",
+      "#7fe0a8",
+      "#ffa95a",
+      "#f2ea6a",
+      "#c6e27a",
+      "#ffb3c1",
+      "#9ad7ff",
+      "#b49cf0"
+    ]
+  },
+  {
+    "id": "frost",
+    "name": "Frost Highlands",
+    "center": [
+      0,
+      -1080
+    ],
+    "terrain": {
+      "base": 40,
+      "amp": 70,
+      "ridged": 120,
+      "freq": 0.0028
+    },
+    "colors": {
+      "low": "#dcebef",
+      "mid": "#c3d9e4",
+      "high": "#fbfbff",
+      "accent": "#9ad7ff"
+    },
+    "sky": "#eef4f8",
+    "prop": "snowPine",
+    "propDensity": 0.9,
+    "fields": [
+      "#e8f2f8",
+      "#d6e8f2",
+      "#f4f8fb",
+      "#c9e2ee"
+    ]
+  },
+  {
+    "id": "ember",
+    "name": "Ember Peaks",
+    "center": [
+      1080,
+      -160
+    ],
+    "terrain": {
+      "base": 30,
+      "amp": 50,
+      "ridged": 110,
+      "freq": 0.0032
+    },
+    "colors": {
+      "low": "#ffc27a",
+      "mid": "#ff9a5a",
+      "high": "#a79fbd",
+      "accent": "#ff6a3d"
+    },
+    "sky": "#fbe9d8",
+    "prop": "lavaRock",
+    "propDensity": 0.7,
+    "fields": [
+      "#ffa95a",
+      "#ffd84d",
+      "#ff8f6a",
+      "#f2b07a",
+      "#ffc2a0"
+    ]
+  },
+  {
+    "id": "haunted",
+    "name": "Haunted Hollow",
+    "center": [
+      -1080,
+      -120
+    ],
+    "terrain": {
+      "base": 14,
+      "amp": 34,
+      "ridged": 20,
+      "freq": 0.0045
+    },
+    "colors": {
+      "low": "#c9b4ee",
+      "mid": "#b49cf0",
+      "high": "#8f84b0",
+      "accent": "#d8c2ff"
+    },
+    "sky": "#e8e2f4",
+    "prop": "deadTree",
+    "propDensity": 0.9,
+    "fields": [
+      "#d8c2ff",
+      "#b49cf0",
+      "#c6b6e8",
+      "#a99ad8",
+      "#e2d4ff"
+    ]
+  },
+  {
+    "id": "neon",
+    "name": "Neon City",
+    "center": [
+      720,
+      860
+    ],
+    "terrain": {
+      "base": 9,
+      "amp": 5,
+      "ridged": 0,
+      "freq": 0.004
+    },
+    "colors": {
+      "low": "#e2dcf0",
+      "mid": "#d0c8ec",
+      "high": "#b5acc9",
+      "accent": "#ff8fb1"
+    },
+    "sky": "#efe8f6",
+    "prop": "neonBlock",
+    "propDensity": 1.2,
+    "fields": [
+      "#ff8fb1",
+      "#9ad7ff",
+      "#ffd84d",
+      "#b49cf0",
+      "#ecdfb8"
+    ]
+  },
+  {
+    "id": "azure",
+    "name": "Azure Coast",
+    "center": [
+      -680,
+      920
+    ],
+    "terrain": {
+      "base": -10,
+      "amp": 22,
+      "ridged": 0,
+      "freq": 0.006
+    },
+    "colors": {
+      "low": "#efe0b8",
+      "mid": "#7fe0a8",
+      "high": "#a3dc4e",
+      "accent": "#9fe6ea"
+    },
+    "sky": "#eaf6f4",
+    "prop": "palm",
+    "propDensity": 0.6,
+    "fields": [
+      "#7fe0a8",
+      "#a8e04a",
+      "#fff1a8",
+      "#b2e25e",
+      "#ffc2d9"
+    ]
+  }
+]

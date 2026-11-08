@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="theme-color" content="#f4eedc" />
+    <title>Trainer's Atlas — Pawan's Portfolio</title>
+    <meta name="description" content="Ride Charizard, Gengar and Greninja across a hand-inked Pokémon world to discover Pawan's projects." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Kalam:wght@400;700&family=DM+Sans:wght@500;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <div id="loading">
+      <div class="title-card">
+        <div class="pokeball"><span></span></div>
+        <h1>Trainer's Atlas</h1>
+        <p class="sub">Pawan's portfolio, drawn as a Pokémon world</p>
+        <div class="bar"><i id="load-bar"></i></div>
+        <p id="load-label">Folding the paper world…</p>
+        <button id="start" hidden>▶ PRESS START</button>
+        <p class="fine">Fan-made, non-commercial. Pokémon © Nintendo / Creatures Inc. / GAME FREAK inc.</p>
+      </div>
+    </div>
+
+    <div id="hud" hidden>
+      <div id="hud-top">
+        <div class="pill"><b class="tiny">ATLAS</b> <span id="hud-count" class="brush">0 / 40</span></div>
+        <div id="hud-region" class="pill brush">Pallet Meadows</div>
+        <div class="spacer"></div>
+        <button id="help" class="pill" aria-label="Controls">?</button>
+        <button id="mute" class="pill" aria-label="Mute">🔊</button>
+      </div>
+      <canvas id="minimap" width="168" height="168"></canvas>
+      <div id="rides">
+        <button data-ride="charizard" title="Fly (1 / F)"><i>🔥</i>Charizard</button>
+        <button data-ride="gengar" title="Run (2)"><i>👻</i>Gengar</button>
+        <button data-ride="greninja" title="Surf (3)"><i>💧</i>Greninja</button>
+      </div>
+      <div id="toast"></div>
+      <div id="hint"></div>
+      <aside id="card">
+        <button id="card-close" aria-label="Close">✕</button>
+        <small id="card-region"></small>
+        <h2 id="card-title"></h2>
+        <p id="card-subtitle"></p>
+        <p id="card-body"></p>
+        <a id="card-link" target="_blank" rel="noopener" hidden></a>
+      </aside>
+      <div id="helpbox">
+        <h3>Controls</h3>
+        <p><b>Fly</b>: A/D steer · W/S climb/dive · Space flap · Shift boost</p>
+        <p><b>Run / Surf</b>: W/S move · A/D steer · Space hop · Shift dash</p>
+        <p><b>Rides</b>: dive low to land (auto Gengar on land, Greninja on water) · 1/F take off · 2/3 switch</p>
+        <p><b>Other</b>: drag to look · M map</p>
+      </div>
+      <div id="touch">
+        <div id="stick"><div id="knob"></div></div>
+        <div id="buttons">
+          <button data-action="jump">▲</button>
+          <button data-action="boost">BOOST</button>
+          <button data-action="fly">FLY</button>
+          <button data-action="land">LAND</button>
+          <button data-action="map">MAP</button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

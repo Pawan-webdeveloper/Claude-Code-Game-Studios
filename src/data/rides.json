@@ -1,0 +1,154 @@
+{
+  "charizard": {
+    "label": "Charizard",
+    "surface": "air",
+    "model": "/models/pokemon/charizard.glb",
+    "height": 4.2,
+    "yawOffset": 0,
+    "lift": 0,
+    "speed": 34,
+    "boostSpeed": 68,
+    "accel": 1.6,
+    "turnRate": 1.35,
+    "pitchRate": 0.9,
+    "maxPitch": 0.6,
+    "minClearance": 3.5,
+    "maxAltitude": 340,
+    "bankMax": 0.75,
+    "flapHz": 1.6,
+    "flapAmp": 0.65,
+    "boostFlapHz": 2.6,
+    "camera": {
+      "distance": 16,
+      "height": 5.5,
+      "lookAhead": 8
+    },
+    "seat": {
+      "x": 0,
+      "y": 0.6,
+      "z": 0.06
+    },
+    "riderPose": "sit",
+    "flapBones": [
+      "LFeeler",
+      "RFeeler"
+    ],
+    "flapAxis": [
+      0,
+      0,
+      1
+    ],
+    "tailBones": [
+      "Tail"
+    ],
+    "modelPitch": 0,
+    "poseBends": [
+      {
+        "bone": "Spine1",
+        "axis": [
+          1,
+          0,
+          0
+        ],
+        "angle": 1.1
+      },
+      {
+        "bone": "Neck1",
+        "axis": [
+          1,
+          0,
+          0
+        ],
+        "angle": -0.45
+      }
+    ],
+    "faceBones": [
+      "LToe",
+      "LFoot"
+    ],
+    "showRider": true
+  },
+  "gengar": {
+    "label": "Gengar",
+    "surface": "land",
+    "model": "/models/pokemon/gengar.glb",
+    "height": 2.4,
+    "yawOffset": 0,
+    "lift": 0,
+    "speed": 19,
+    "boostSpeed": 34,
+    "accel": 3.2,
+    "turnRate": 2.2,
+    "hopVelocity": 11,
+    "gravity": 30,
+    "bobHz": 2.6,
+    "bobAmp": 0.18,
+    "camera": {
+      "distance": 11,
+      "height": 4.2,
+      "lookAhead": 6
+    },
+    "seat": {
+      "x": 0,
+      "y": 0.62,
+      "z": 0
+    },
+    "riderPose": "sit",
+    "legBones": [
+      "RThigh",
+      "LThigh"
+    ],
+    "armBones": [
+      "RShoulder",
+      "LShoulder"
+    ],
+    "modelPitch": 0,
+    "faceBones": [
+      "LToe",
+      "LFoot"
+    ],
+    "showRider": false
+  },
+  "greninja": {
+    "label": "Greninja",
+    "surface": "amphibious",
+    "model": "/models/pokemon/greninja-lite.glb",
+    "height": 2.8,
+    "yawOffset": 0,
+    "lift": 0,
+    "speed": 17,
+    "boostSpeed": 32,
+    "accel": 2.6,
+    "turnRate": 2.0,
+    "hopVelocity": 12,
+    "gravity": 30,
+    "bobHz": 1.4,
+    "bobAmp": 0.22,
+    "clip": "run01_loop",
+    "idleClip": "defaultwait01_loop",
+    "camera": {
+      "distance": 12,
+      "height": 4.4,
+      "lookAhead": 6
+    },
+    "seat": {
+      "x": 0,
+      "y": 0.52,
+      "z": -0.06
+    },
+    "riderPose": "sit",
+    "modelPitch": 0,
+    "stripRootMotion": "origin",
+    "faceBones": [
+      "left_foot_index_02",
+      "left_foot_55"
+    ],
+    "showRider": false
+  },
+  "switching": {
+    "landClearance": 2.2,
+    "takeoffVelocity": 14,
+    "shoreMargin": 0.6,
+    "burstDuration": 0.5
+  }
+}

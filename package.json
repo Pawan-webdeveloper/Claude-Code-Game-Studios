@@ -1,0 +1,30 @@
+{
+  "name": "trainers-atlas",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Trainer's Atlas — Pawan's Pokémon-world portfolio game (Three.js)",
+  "scripts": {
+    "predev": "node tools/copy-draco.mjs",
+    "dev": "vite",
+    "prebuild": "node tools/copy-draco.mjs",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "assets:greninja": "node tools/prune-greninja.mjs"
+  },
+  "dependencies": {
+    "three": "^0.170.0"
+  },
+  "devDependencies": {
+    "@gltf-transform/core": "^4.1.1",
+    "@gltf-transform/extensions": "^4.1.1",
+    "@gltf-transform/functions": "^4.1.1",
+    "@types/three": "^0.170.0",
+    "draco3dgltf": "^1.5.7",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.7",
+    "vitest": "^2.1.8"
+  }
+}

@@ -1,0 +1,169 @@
+/* Paper Atlas UI — ink on paper: DM Sans for labels, Kalam for hand-written text, Caveat Brush
+   for titles; thin ink borders with offset shadows (BUG-0005). */
+:root {
+  --paper: #f4efe2;
+  --paper2: #fbf8ef;
+  --ink: #1f1d2b;
+  --terracotta: #b5503c;
+  --green: #2e7d5b;
+  --gold: #f2c94c;
+  --sky: #9ad7ff;
+  font-family: "DM Sans", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; height: 100%; overflow: hidden; background: var(--paper); color: var(--ink);
+  overscroll-behavior: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
+}
+#app { position: fixed; inset: 0; }
+#app canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: grab; }
+#app canvas:active { cursor: grabbing; }
+.brush { font-family: "Caveat Brush", cursive; font-weight: 400; }
+.hand { font-family: "Kalam", cursive; font-weight: 700; }
+.tiny { font: 700 9px/1.2 "DM Sans", sans-serif; letter-spacing: 0.2em; text-transform: uppercase; }
+
+/* Loading / title */
+#loading {
+  position: fixed; inset: 0; display: grid; place-items: center; z-index: 10; transition: opacity 0.6s ease;
+  background:
+    radial-gradient(ellipse at center, transparent 50%, rgba(120, 95, 60, 0.18) 100%),
+    var(--paper);
+}
+#loading.gone { opacity: 0; pointer-events: none; }
+.title-card {
+  width: min(440px, calc(100vw - 32px)); text-align: center; padding: 26px 22px 18px; background: var(--paper2);
+  border: 1.5px solid var(--ink); border-radius: 4px; box-shadow: 3px 3px 0 rgba(31, 29, 43, 0.85);
+}
+.title-card h1 { margin: 10px 0 0; font: 400 52px/1 "Caveat Brush", cursive; letter-spacing: 0.01em; }
+.title-card .sub { margin: 4px 0 16px; font: 700 15px "Kalam", cursive; opacity: 0.8; }
+.title-card .fine { font: 500 10px "DM Sans", sans-serif; opacity: 0.55; margin: 14px 0 0; }
+.pokeball {
+  width: 48px; height: 48px; margin: 0 auto; border-radius: 50%; border: 2px solid var(--ink);
+  background: linear-gradient(#e8473c 0 46%, var(--ink) 46% 54%, #fbf8ef 54%); position: relative;
+  animation: wobble 1.4s ease-in-out infinite;
+}
+.pokeball span {
+  position: absolute; left: 50%; top: 50%; width: 14px; height: 14px; margin: -7px; border-radius: 50%;
+  background: #fbf8ef; border: 2px solid var(--ink);
+}
+@keyframes wobble { 0%,100% { transform: rotate(0); } 20% { transform: rotate(-14deg); } 40% { transform: rotate(12deg); } 60% { transform: rotate(-6deg); } }
+.bar { height: 10px; border: 1.5px solid var(--ink); border-radius: 2px; overflow: hidden; background: #fff; }
+.bar i { display: block; height: 100%; width: 0; background: repeating-linear-gradient(-45deg, var(--ink) 0 2px, transparent 2px 6px), var(--sky); transition: width 0.2s; }
+#load-label { font: 700 14px "Kalam", cursive; margin: 8px 0 0; min-height: 1.2em; }
+#start {
+  margin-top: 12px; padding: 10px 20px; cursor: pointer; color: var(--paper2); background: var(--ink);
+  font: 700 11px/1 "DM Sans", sans-serif; letter-spacing: 0.18em; text-transform: uppercase;
+  border: 1.5px solid var(--ink); border-radius: 3px; box-shadow: 2px 2px 0 rgba(31, 29, 43, 0.4);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+#start:active { transform: translate(1px, 1px); box-shadow: none; }
+@keyframes pulse { 50% { transform: scale(1.04); } }
+
+/* HUD */
+#hud { position: fixed; inset: 0; pointer-events: none; z-index: 5; }
+#hud[hidden] { display: none; }
+#hud button, #hud a, #card, #minimap, #toast { pointer-events: auto; }
+#hud-top { position: absolute; top: max(30px, env(safe-area-inset-top)); left: 34px; right: 34px; display: flex; gap: 8px; align-items: center; }
+#hud-top .spacer { flex: 1; }
+.pill {
+  background: var(--paper2); border: 1.5px solid var(--ink); border-radius: 3px; padding: 5px 10px; font-size: 18px;
+  box-shadow: 1.5px 1.5px 0 var(--ink); color: var(--ink); display: flex; align-items: center; gap: 8px;
+}
+button.pill { cursor: pointer; min-width: 34px; justify-content: center; font: 700 13px "DM Sans", sans-serif; }
+button.pill:hover { transform: translate(-1px, -1px); box-shadow: 2.5px 2.5px 0 var(--ink); }
+#hud-region { font-size: 20px; }
+#hud-region.flash { animation: flash 2.4s ease; }
+@keyframes flash { 0% { background: var(--gold); transform: scale(1.1) rotate(-2deg); } 100% { background: var(--paper2); transform: none; } }
+#minimap {
+  position: absolute; right: 34px; top: 78px; width: 164px; height: 164px; border: 1.5px solid var(--ink);
+  border-radius: 4px; background: #9fe6ea; box-shadow: 3px 3px 0 rgba(31, 29, 43, 0.85); image-rendering: pixelated;
+}
+#rides { position: absolute; left: 34px; bottom: max(30px, env(safe-area-inset-bottom)); display: flex; gap: 6px; }
+#rides button {
+  font: 700 9.5px/1.1 "DM Sans", sans-serif; letter-spacing: 0.14em; text-transform: uppercase; padding: 7px 10px;
+  border: 1.5px solid var(--ink); border-radius: 3px; background: var(--paper2); box-shadow: 1.5px 1.5px 0 var(--ink);
+  cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 2px; color: var(--ink); transition: transform 0.08s;
+}
+#rides button:hover { transform: translate(-1px, -1px); box-shadow: 2.5px 2.5px 0 var(--ink); }
+#rides button i { font-style: normal; font-size: 18px; }
+#rides button.active { background: var(--ink); color: var(--paper2); }
+#rides button:disabled { opacity: 0.4; cursor: wait; }
+#toast {
+  position: absolute; top: 84px; left: 50%; transform: translate(-50%, -16px) rotate(-1deg); opacity: 0; transition: 0.35s;
+  background: var(--paper2); border: 1.5px solid var(--ink); border-radius: 4px; padding: 10px 18px; box-shadow: 3px 3px 0 rgba(31, 29, 43, 0.85);
+  max-width: min(460px, calc(100vw - 32px)); text-align: center; cursor: pointer;
+}
+#toast.show { opacity: 1; transform: translate(-50%, 0) rotate(-1deg); }
+#toast strong { display: block; font: 400 28px/1.1 "Caveat Brush", cursive; }
+#toast span { font: 700 15px "Kalam", cursive; }
+#hint {
+  position: absolute; bottom: 96px; left: 50%; transform: translateX(-50%); opacity: 0; transition: 0.4s; white-space: nowrap;
+  background: var(--ink); color: var(--paper2); padding: 7px 14px; border-radius: 3px; font: 700 10px "DM Sans", sans-serif;
+  letter-spacing: 0.12em; text-transform: uppercase; max-width: calc(100vw - 32px); overflow: hidden; text-overflow: ellipsis;
+}
+#hint.show { opacity: 1; }
+#card {
+  position: absolute; right: 34px; top: 262px; width: min(340px, calc(100vw - 68px)); background: var(--paper2);
+  border: 1.5px solid var(--ink); border-radius: 4px; padding: 16px 18px; box-shadow: 3px 3px 0 rgba(31, 29, 43, 0.85);
+  transform: translateX(130%) rotate(1deg); transition: transform 0.4s cubic-bezier(.2,.9,.3,1.2);
+}
+#card:not(.show) { visibility: hidden; transition: transform 0.4s, visibility 0s 0.4s; }
+#card.show { transform: rotate(0.6deg); }
+#card.project { border-top: 6px solid var(--gold); }
+#card small { font: 700 9px "DM Sans", sans-serif; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.6; }
+#card h2 { margin: 2px 0 0; font: 400 36px/1 "Caveat Brush", cursive; }
+#card-subtitle { margin: 2px 0 8px; color: var(--terracotta); font: 700 15px "Kalam", cursive; }
+#card-body { margin: 0 0 12px; font: 500 14px/1.5 "DM Sans", sans-serif; }
+#card-link {
+  display: inline-block; padding: 8px 12px; background: var(--ink); color: var(--paper2); text-decoration: none;
+  font: 700 10px "DM Sans", sans-serif; letter-spacing: 0.16em; text-transform: uppercase;
+  border: 1.5px solid var(--ink); border-radius: 3px; box-shadow: 1.5px 1.5px 0 rgba(31, 29, 43, 0.4);
+}
+#card-link:hover { background: var(--green); }
+#card-close { position: absolute; top: 8px; right: 10px; border: 0; background: none; font-size: 16px; cursor: pointer; color: var(--ink); }
+#helpbox {
+  display: none; position: absolute; left: 34px; bottom: 104px; width: min(390px, calc(100vw - 68px)); background: var(--paper2);
+  border: 1.5px solid var(--ink); border-radius: 4px; padding: 10px 14px; box-shadow: 3px 3px 0 rgba(31, 29, 43, 0.85);
+  font: 500 13px/1.5 "DM Sans", sans-serif;
+}
+#helpbox h3 { margin: 0 0 4px; font: 400 26px "Caveat Brush", cursive; }
+#helpbox p { margin: 3px 0; }
+body.show-help #helpbox { display: block; }
+
+/* Touch controls */
+#touch { display: none; }
+body.touch #touch { display: block; }
+body.touch #rides { bottom: auto; top: 76px; left: 30px; }
+body.touch #rides button { padding: 4px 7px; font-size: 8px; }
+#stick {
+  position: absolute; left: 34px; bottom: max(36px, env(safe-area-inset-bottom)); width: 128px; height: 128px; border-radius: 50%;
+  background: rgba(251, 248, 239, 0.55); border: 1.5px solid var(--ink); pointer-events: auto; touch-action: none;
+}
+#knob {
+  position: absolute; left: 50%; top: 50%; width: 54px; height: 54px; margin: -27px; border-radius: 50%;
+  background: var(--paper2); border: 1.5px solid var(--ink); box-shadow: 2px 2px 0 var(--ink);
+}
+#buttons {
+  position: absolute; right: 30px; bottom: max(32px, env(safe-area-inset-bottom)); display: grid; grid-template-columns: repeat(2, 62px); gap: 8px;
+}
+#buttons button {
+  pointer-events: auto; touch-action: none; height: 52px; border-radius: 3px; border: 1.5px solid var(--ink); background: var(--paper2);
+  font: 700 10px "DM Sans", sans-serif; letter-spacing: 0.14em; color: var(--ink); box-shadow: 1.5px 1.5px 0 var(--ink);
+}
+#buttons button.down { background: var(--ink); color: var(--paper2); transform: translate(1px, 1px); }
+#buttons button[data-action="jump"] { grid-column: span 2; }
+body.touch #card { top: auto; bottom: 200px; right: 50%; transform: translate(50%, 150%); }
+body.touch #card.show { transform: translate(50%, 0); }
+body.touch #hint { bottom: 250px; white-space: normal; text-align: center; }
+body.touch #toast { top: 140px; }
+@media (max-width: 600px) {
+  #minimap { width: 116px; height: 116px; top: 70px; right: 26px; }
+  #hud-top { left: 26px; right: 26px; gap: 6px; top: max(26px, env(safe-area-inset-top)); }
+  .pill { font-size: 15px; padding: 4px 8px; }
+  #hud-region { font-size: 16px; }
+  #card { padding: 12px 14px; }
+  #card h2 { font-size: 30px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pokeball, #start { animation: none; }
+}
